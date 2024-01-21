@@ -78,20 +78,27 @@ body {
   display: flex;
   align-items: center;
 }
+#opinions .main-slide .slides {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 75%;
+}
 .slides {
   display: flex;
   align-items: center;
   gap: 20px;
+  width: 90%;
 }
 .prev {
   z-index: 1;
   position: relative;
-  right: -25px;
+  right: -10px;
 }
 .next {
   z-index: 1;
   position: relative;
-  left: -25px;
+  left: -10px;
 }
 
 .dot {
@@ -104,6 +111,7 @@ body {
 
 .mySlides {
   width: 100%;
+  transition: 500ms;
 }
 .active {
   background-color: var(--blue-color);
@@ -498,6 +506,7 @@ header .menu {
 
   direction: rtl;
 }
+
 /* end of features section */
 #opinions .main-slide .slides .opinion-sq {
   padding: 5px;
@@ -505,10 +514,11 @@ header .menu {
   height: 216px;
   border-radius: 10px;
   color: var(--white-color);
-  background-color: var(--beige-color);
+  /* background-color: var(--beige-color); */
   text-align: -webkit-center;
+  transition: 500ms;
 }
-#opinions .main-slide .slides .opinion-sq:nth-child(2) {
+.active-opinion {
   background-color: var(--blue-color);
 }
 
@@ -540,7 +550,7 @@ header .menu {
   text-align: right;
 }
 
-/* end of costumer opinions section */
+/* end of customer opinions section */
 
 .curved-banner {
   position: relative;

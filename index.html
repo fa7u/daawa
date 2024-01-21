@@ -135,7 +135,7 @@
 
             <h1 class="price-number" style="color: var(--white-color)">20$</h1>
 
-            <div class="features">
+            <div class="package-features">
               <div class="line">
                 <p>كود دخول خاص لكل مدعو QR</p>
                 <img src="images/check2.png" alt="" class="check" />
@@ -180,7 +180,7 @@
 
             <h1 class="price-number">10$</h1>
 
-            <div class="features">
+            <div class="package-features">
               <div class="line">
                 <p>كود دخول خاص لكل مدعو QR</p>
                 <img src="images/check.png" alt="" class="check" />
@@ -337,7 +337,7 @@
           ><img src="images/left-row.png" alt="" />
         </a>
         <div class="slides">
-          <div class="opinion-sq fade">
+          <div class="opinion-sq active-opinion">
             <div class="opinion-header">
               <img src="images/user.png" alt="" class="user-pic" />
               <h3 class="user-name">مجد العزيبي</h3>
@@ -442,6 +442,10 @@
     </button>
 
     <script>
+      window.addEventListener("resize", () => {
+        showSlides(slideIndex);
+        showOpinion(opinionIndex); // Update display based on new screen width
+      });
       let slideIndex = 1;
       showSlides(slideIndex);
 
@@ -466,27 +470,35 @@
           slideIndex = slides.length;
         }
         for (i = 0; i < slides.length; i++) {
-          // slides[i].style.display = "none";
+          if (window.matchMedia("(max-width: 768px)").matches) {
+            slides[i].style.display = "none";
+            slides[slideIndex - 1].style.display = "block";
+          } else {
+            // If not small screen, revert to default display
+            slides[i].style.display = ""; // Remove none display style
+          }
 
           // تغير حجم الشريحة المحددة
-          slides[i].style.transform = "scale(1)";
+          if (window.matchMedia("(min-width: 769px)").matches) {
+            slides[i].style.transform = "scale(1)";
+            slides[slideIndex - 1].style.transform = "scale(1.1)";
+            slides[i].style.zIndex = 0;
+            slides[slideIndex - 1].style.zIndex = 2;
+          } else {
+            slides[i].style.transform = "scale(1)";
+          }
         }
         for (i = 0; i < dots.length; i++) {
           dots[i].className = dots[i].className.replace(" active", "");
         }
 
-        // تغير حجم الشريحة المحددة
-        slides[slideIndex - 1].style.transform = "scale(1.1)";
-
         // slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
       }
 
-      // costumer opinion slides
+      // customer opinion slides
       let opinionIndex = 1;
-      window.addEventListener("resize", () => {
-        showOpinion(opinionIndex); // Update display based on new screen width
-      });
+
       showOpinion(opinionIndex);
 
       // Next/previous controls
@@ -509,24 +521,29 @@
           opinionIndex = opinion.length;
         }
         for (i = 0; i < opinion.length; i++) {
+          // يستخدم للشاشات الصغيرة والمتوسطة وذلك لإبقاء شريحة واحدة فقط لعرضها
           if (window.matchMedia("(max-width: 768px)").matches) {
             opinion[i].style.display = "none";
+            opinion[opinionIndex - 1].style.display = "block";
+            opinion[opinionIndex - 1].style.backgroundColor =
+              "var(--blue-color)";
           } else {
             // If not small screen, revert to default display
-            opinion[i].style.display = ""; // Remove inline display style
+            opinion[i].style.display = ""; // Remove none display style
           }
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            opinion[opinionIndex - 1].style.display = "block";
-          }
-          // تغير حجم الشريحة المحددة
+
+          // تغير حجم ولون الشريحة المحددة
           if (window.matchMedia("(min-width: 769px)").matches) {
             opinion[i].style.transform = "scale(1)";
+            opinion[opinionIndex - 1].style.transform = "scale(1.1)";
+            opinion[i].style.backgroundColor = "var(--beige-color)";
+            opinion[opinionIndex - 1].style.backgroundColor =
+              "var(--blue-color)";
+            opinion[i].style.zIndex = 0;
+            opinion[opinionIndex - 1].style.zIndex = 2;
+          } else {
+            opinion[i].style.transform = "scale(1)";
           }
-        }
-
-        // تغير حجم الشريحة المحددة
-        if (window.matchMedia("(min-width: 769px)").matches) {
-          opinion[opinionIndex - 1].style.transform = "scale(1.1)";
         }
       }
     </script>
