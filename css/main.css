@@ -167,7 +167,7 @@ header .list a:first-child {
   border-radius: 20px;
   transition: 500ms;
 }
-header .icon {
+header .menu {
   width: 52px;
   height: 52px;
   display: none;
@@ -392,7 +392,7 @@ header .icon {
   border-top: 2px solid var(--beige-color);
 }
 
-/* في حالة الشغل الفعلي هذا الكود جاهز لتغسير خلفية الزر المطلوب وموجود ايضا فوق للباقات الأخرى*/
+/* في حالة الشغل الفعلي هذا الكود جاهز لتغيير خلفية الزر المطلوب وموجود ايضا فوق للباقات الأخرى*/
 /* .special .guests-bt:active {
   background-color: var(--blue-color);
   color: var(--white-color);
@@ -458,6 +458,8 @@ header .icon {
   text-align: center;
 }
 
+/* end of about section */
+
 #features .content {
   width: 100%;
   text-align: -webkit-center;
@@ -496,7 +498,7 @@ header .icon {
 
   direction: rtl;
 }
-
+/* end of features section */
 #opinions .main-slide .slides .opinion-sq {
   padding: 5px;
   width: 350px;
@@ -538,12 +540,8 @@ header .icon {
   letter-spacing: 0em;
   text-align: right;
 }
-/* #opinions .main-slide .next {
-  left: -20px;
-}
-#opinions .main-slide .prev {
-  left: 20px;
-} */
+
+/* end of costumer opinions section */
 
 .curved-banner {
   position: relative;
@@ -719,7 +717,7 @@ footer .inner-footer {
     display: inline;
   }
 
-  header .icon {
+  header .menu {
     display: inline;
   }
 
@@ -925,7 +923,7 @@ footer .inner-footer {
     padding: 0 15px 100px;
   }
   .button-bt {
-    width: 190px;
+    width: 180px;
   }
 
   header {
@@ -1063,7 +1061,7 @@ footer .inner-footer {
     width: 100%;
   }
   #features .content .features-sq .feat {
-    width: 147px;
+    width: 40%;
   }
 
   #features .content .feat .feat-text {
@@ -1113,12 +1111,23 @@ footer .inner-footer {
     transform: scaleY(-1) rotate(15deg);
     clip-path: polygon(0 0, 100% 0, 100% 60%, 20% 50%, -22% 100%, 0 0);
   }
+  footer {
+    height: 1064px;
+  }
 
   footer .content {
     flex-direction: column;
     align-items: center;
+    top: -8%;
+    text-align: justify;
+  }
+  footer hr {
+    position: relative;
+    top: -7%;
   }
   footer .inner-footer {
     flex-direction: column;
+    position: relative;
+    top: -8%;
   }
 }
