@@ -510,7 +510,6 @@ header .menu {
 }
 #opinions .main-slide .slides .opinion-sq:nth-child(2) {
   background-color: var(--blue-color);
-  transform: scale(1.1);
 }
 
 #opinions .main-slide .slides .opinion-sq .opinion-header {

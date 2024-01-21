@@ -16,7 +16,7 @@
       </div>
       <div class="list">
         <a href="#main">الرئيسية</a>
-        <a href="#prices">الباقات والأسعار</a>
+        <a href="#price">الباقات والأسعار</a>
         <a href="#about">من نحن</a>
         <a href="#features">لماذا دعوة+</a>
         <a href="#contact">للتواصل</a>
@@ -25,12 +25,12 @@
       <button class="button-bt">
         <img src="images/googlePlay.png" alt="" />تنزيل التطبيق
       </button>
-      <img class="menu" src="images/menu.png" alt="" class="icon" />
+      <img class="menu" src="images/menu.png" alt="" />
     </header>
 
     <section id="home">
       <div class="content">
-        <img src="/images/Graphic Element.png" alt="" class="home-image" />
+        <img src="images/Graphic Element.png" alt="" class="home-image" />
         <div class="text">
           <p>
             مناسبتك مهمة ؟ <br />يعني محتاج تنظيم دعواتك الالكترونية يعني
@@ -333,9 +333,11 @@
       </p>
 
       <div class="main-slide">
-        <a class="prev"><img src="images/left-row.png" alt="" /> </a>
+        <a class="prev" onclick="plusOpinion(-1)"
+          ><img src="images/left-row.png" alt="" />
+        </a>
         <div class="slides">
-          <div class="opinion-sq">
+          <div class="opinion-sq fade">
             <div class="opinion-header">
               <img src="images/user.png" alt="" class="user-pic" />
               <h3 class="user-name">مجد العزيبي</h3>
@@ -346,7 +348,7 @@
               الحضور، وذلك ساعدني في تخطيط الفعالية بشكل أفضل
             </p>
           </div>
-          <div class="opinion-sq">
+          <div class="opinion-sq fade">
             <div class="opinion-header">
               <img src="images/user.png" alt="" class="user-pic" />
               <h3 class="user-name">مجد العزيبي</h3>
@@ -357,7 +359,7 @@
               الحضور، وذلك ساعدني في تخطيط الفعالية بشكل أفضل
             </p>
           </div>
-          <div class="opinion-sq">
+          <div class="opinion-sq fade">
             <div class="opinion-header">
               <img src="images/user.png" alt="" class="user-pic" />
               <h3 class="user-name">مجد العزيبي</h3>
@@ -369,7 +371,9 @@
             </p>
           </div>
         </div>
-        <a class="next"><img src="images/right-row.png" alt="" /> </a>
+        <a class="next" onclick="plusOpinion(1)"
+          ><img src="images/right-row.png" alt="" />
+        </a>
       </div>
     </section>
 
@@ -386,7 +390,7 @@
         </div>
 
         <div class="links">
-          <h2>روابط مهمة:</h2>
+          <h2>روابط مهمة :</h2>
           <ol>
             <li><a href="#questions">الاسئلة المتكررة</a></li>
             <li><a href="#price">الباقات والأسعار </a></li>
@@ -396,7 +400,7 @@
         </div>
 
         <div class="contact">
-          <h2>معلومات للتواصل:</h2>
+          <h2>معلومات للتواصل :</h2>
 
           <ol>
             <li><a href="#number">+967-777-777-777</a></li>
@@ -427,7 +431,9 @@
           جميع الحقوق محفوظة <span class="footer-color">&copy</span> لـ
           <span class="footer-color"><b>DevNova</b></span> -
         </p>
-        <p>صنع بحب بواسطة</p>
+        <p>
+          صنع بحب بواسطة <span class="footer-color"><b>DevNova</b></span>
+        </p>
       </div>
     </footer>
 
@@ -474,6 +480,54 @@
 
         // slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
+      }
+
+      // costumer opinion slides
+      let opinionIndex = 1;
+      window.addEventListener("resize", () => {
+        showOpinion(opinionIndex); // Update display based on new screen width
+      });
+      showOpinion(opinionIndex);
+
+      // Next/previous controls
+      function plusOpinion(n) {
+        showOpinion((opinionIndex += n));
+      }
+
+      // Thumbnail image controls
+      function currentOpinion(n) {
+        showOpinion((opinionIndex = n));
+      }
+
+      function showOpinion(n) {
+        let i;
+        let opinion = document.getElementsByClassName("opinion-sq");
+        if (n > opinion.length) {
+          opinionIndex = 1;
+        }
+        if (n < 1) {
+          opinionIndex = opinion.length;
+        }
+        for (i = 0; i < opinion.length; i++) {
+          if (window.matchMedia("(max-width: 768px)").matches) {
+            opinion[i].style.display = "none";
+          } else {
+            // If not small screen, revert to default display
+            opinion[i].style.display = ""; // Remove inline display style
+          }
+          if (window.matchMedia("(max-width: 768px)").matches) {
+            opinion[opinionIndex - 1].style.display = "block";
+          }
+          // تغير حجم الشريحة المحددة
+          if (window.matchMedia("(min-width: 769px)").matches) {
+            opinion[i].style.transform = "scale(1)";
+          }
+        }
+
+        // تغير حجم الشريحة المحددة
+        if (window.matchMedia("(min-width: 769px)").matches) {
+          opinion[opinionIndex - 1].style.transform = "scale(1.1)";
+        }
       }
     </script>
   </body>
